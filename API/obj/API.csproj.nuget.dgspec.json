@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "e:\\RealTalk (Revised)\\RealTalk-Internet-Forum\\API\\API.csproj": {}
+    "E:\\RealTalk (Revised)\\RealTalk-Internet-Forum\\API\\API.csproj": {}
   },
   "projects": {
-    "e:\\RealTalk (Revised)\\RealTalk-Internet-Forum\\API\\API.csproj": {
+    "E:\\RealTalk (Revised)\\RealTalk-Internet-Forum\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\RealTalk (Revised)\\RealTalk-Internet-Forum\\API\\API.csproj",
+        "projectUniqueName": "E:\\RealTalk (Revised)\\RealTalk-Internet-Forum\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "e:\\RealTalk (Revised)\\RealTalk-Internet-Forum\\API\\API.csproj",
+        "projectPath": "E:\\RealTalk (Revised)\\RealTalk-Internet-Forum\\API\\API.csproj",
         "packagesPath": "C:\\Users\\Kosti\\.nuget\\packages\\",
-        "outputPath": "e:\\RealTalk (Revised)\\RealTalk-Internet-Forum\\API\\obj\\",
+        "outputPath": "E:\\RealTalk (Revised)\\RealTalk-Internet-Forum\\API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -25,6 +25,7 @@
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -44,6 +45,12 @@
           "targetAlias": "net5.0",
           "dependencies": {
             "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[5.0.17, )"
             },
