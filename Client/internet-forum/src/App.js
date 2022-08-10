@@ -1,19 +1,21 @@
 import "./App.css";
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 function App() {
   const [apiResponse, setApiResponse] = useState();
-  useEffect(() => {
-    var a = axios
+  //
+  var getRequest = () => {
+    axios
       .get("https://localhost:5001/api/users", { "Content-Type": "text/plain" })
       .then((res) => setApiResponse(res.data) & console.log(res.data));
-  }, []);
-
+  };
   return (
     <div className="App">
       <h1>API Request and Response Example</h1>
+      <button onClick={() => getRequest()}>Get Request</button>
+
       {apiResponse !== undefined
         ? apiResponse?.map((user, i) => {
             return (
