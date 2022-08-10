@@ -15,16 +15,17 @@ function App() {
     <div className="App">
       <h1>API Request and Response Example</h1>
       <button onClick={() => getRequest()}>Get Request</button>
-
-      {apiResponse !== undefined
-        ? apiResponse?.map((user, i) => {
-            return (
-              <div key={i}>
-                {user.id}, {user.userName}, {user.password}
-              </div>
-            );
-          })
-        : "None"}
+      <div>
+        {apiResponse !== undefined
+          ? apiResponse?.map((user, i) => {
+              return (
+                <div key={i}>
+                  {user.id}, {user.userName}, {user.password}
+                </div>
+              );
+            })
+          : "None"}
+      </div>
     </div>
   );
 }
