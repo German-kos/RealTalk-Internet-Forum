@@ -1,0 +1,7 @@
+table {
+  border-collapse: collapse;
+  margin: auto;
+  table-layout: fixed;
+  max-width: 75%;
+  margin-top: 16px;
+}
