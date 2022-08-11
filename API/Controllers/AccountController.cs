@@ -17,18 +17,23 @@ namespace API.Controllers
             _context = context;
         }
         [HttpPost("register")]
-        public async Task<ActionResult<AppUser>> Register(string username, string password)
+        public async Task<ActionResult<AppUser>> Register([FromBody] UserEntity entity)
         {
             using var hmac = new HMACSHA512();
             var user = new AppUser
             {
-                UserName = username,
-                PasswordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password)),
+                UserName = entity.username,
+                PasswordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(entity.password)),
                 PasswordSalt = hmac.Key
             };
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
             return user;
+        }
+        public class UserEntity
+        {
+            public string username { get; set; }
+            public string password { get; set; }
         }
     }
 }
