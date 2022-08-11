@@ -16,8 +16,5 @@ namespace API.Entities
         [Required]
         [MaxLength(20)]
         public string UserName { get; set; }
-        [Required]
-        [MaxLength(30)]
-        public string Password { get; set; }
     }
 }
