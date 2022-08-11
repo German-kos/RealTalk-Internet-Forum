@@ -30,5 +30,10 @@ namespace API.Controllers
             var user = await _context.Users.FindAsync(id);
             return user;
         }
+        // [HttpPost("{username}{password}")]
+        // public async Task<ActionResult<AppUser>> PostUser(string username, string password)
+        // {
+        //     _context.Users.AddAsync<AppUser>(new AppUser(username, password))
+        // }
     }
 }
