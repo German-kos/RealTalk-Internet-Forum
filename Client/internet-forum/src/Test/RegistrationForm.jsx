@@ -2,9 +2,9 @@ import axios from "axios";
 import Button from "react-bootstrap/esm/Button";
 import Form from "react-bootstrap/Form";
 function RegistrationForm() {
+  //
   var onRegisterClick = async (e) => {
     e.preventDefault();
-
     await axios({
       method: "post",
       url: "https://localhost:5001/api/account/register",
@@ -20,6 +20,7 @@ function RegistrationForm() {
       .catch(function (error) {
         console.log(error);
       });
+    //
   };
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
