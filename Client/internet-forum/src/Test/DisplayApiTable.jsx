@@ -52,6 +52,7 @@ function DisplayApiTable() {
           <thead>
             <tr>
               <th>ID</th>
+              <th>Email</th>
               <th>Username</th>
               <th>Password Hash</th>
               <th>Password Salt</th>
@@ -63,6 +64,7 @@ function DisplayApiTable() {
                 <tr key={i}>
                   <th>{row.id}</th>
                   <th>{row.userName}</th>
+                  <th>{row.email}</th>
                   <th title={row.passwordHash}>
                     {displayPartially(row.passwordHash)}
                   </th>
