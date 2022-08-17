@@ -40,10 +40,22 @@ namespace API.Controllers
                     PasswordSalt = hmac.Key
                 };
                 _context.Users.Add(user);
-                await _context.SaveChangesAsync();
+                 _context.SaveChanges();
                 return user;
             }
         }
+        public async Task<ActionResult<AppUser>> Login([FromBody]LoginForm form){
+            if(_context.Users.FirstOrDefault(user => user.UserName.ToLower() ==form.username.ToLower()) == null){
+                return Unauthorized("User does not exist.");
+            };
+                return Unauthorized("User does not exist.");
 
-    }
+        }
+    public bool MatchPassword(LoginForm form){
+        var user = _context.Users.FirstOrDefault(user => user.UserName.ToLower() == form.username.ToLower());
+        if(user == null)
+            return false;
+            return true;
+}
+    };
 }
