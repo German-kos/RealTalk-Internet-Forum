@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using API.Data;
 using API.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
@@ -40,22 +41,37 @@ namespace API.Controllers
                     PasswordSalt = hmac.Key
                 };
                 _context.Users.Add(user);
-                 _context.SaveChanges();
+                _context.SaveChanges();
                 return user;
             }
         }
-        public async Task<ActionResult<AppUser>> Login([FromBody]LoginForm form){
-            if(_context.Users.FirstOrDefault(user => user.UserName.ToLower() ==form.username.ToLower()) == null){
-                return Unauthorized("User does not exist.");
-            };
-                return Unauthorized("User does not exist.");
+        // public async Task<ActionResult<AppUser>> Login([FromBody] LoginForm form)
+        // {
+        //     if (_context.Users.FirstOrDefault(user => user.UserName.ToLower() == form.username.ToLower()) == null)
+        //     {
+        //         return Unauthorized("User does not exist.");
+        //     };
+        //     return Unauthorized("User does not exist.");
 
+        // }
+        // public bool MatchPassword(LoginForm form)
+        // {
+        //     var user = _context.Users.FirstOrDefault(user => user.UserName.ToLower() == form.username.ToLower());
+        //     if (user == null)
+        //         return false;
+        //     return true;
+        // }
+        [HttpGet("signin")]
+        public async Task<ActionResult<LoginForm>> SignIn([FromBody] LoginForm entity)
+        {
+            var userResult = _context.Users.FirstOrDefaultAsync(user => user.UserName.ToLower() == entity.username.ToLower());
+            using var hmac = new HMACSHA512();
+
+            var encryptInput = System.Text.Encoding.UTF8.GetBytes(entity.password + userResult.Result.PasswordSalt);
+            HMACSHA512 hmac1 = new HMACSHA512();
+            var encryptedInput = hmac1.ComputeHash(encryptInput);
+            entity.password = System.Text.Encoding.UTF8.GetString(encryptedInput);
+            return entity;
         }
-    public bool MatchPassword(LoginForm form){
-        var user = _context.Users.FirstOrDefault(user => user.UserName.ToLower() == form.username.ToLower());
-        if(user == null)
-            return false;
-            return true;
-}
     };
 }
