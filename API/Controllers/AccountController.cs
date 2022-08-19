@@ -63,7 +63,7 @@ namespace API.Controllers
         // }
         [HttpGet("signin")]
         public async Task<ActionResult<LoginForm>> SignIn([FromBody] LoginForm entity)
-        {
+        { // doesnt work
             var userResult = _context.Users.FirstOrDefaultAsync(user => user.UserName.ToLower() == entity.username.ToLower());
             using var hmac = new HMACSHA512();
 
