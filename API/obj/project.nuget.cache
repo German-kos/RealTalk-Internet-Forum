@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bqPGu7PW8ElxWxQHOiJ7sVenBt40JL1zWX1DPHNZNw4pev8obNT65OSZAxrIaRTFXlwN6kBLv3aMbQiEXYoTkg==",
+  "dgSpecHash": "v17lQ90mfrsQaNojaYaDehN3yYlJ7vnCsH7O90a/qPldZ6L/UaXu8VJyD8NQrF6z36TP++/ST3fqmJ+txTTIYQ==",
   "success": true,
-  "projectFilePath": "C:\\Work and Productivity\\RealTalk-Internet-Forum\\API\\API.csproj",
+  "projectFilePath": "E:\\RealTalk(Revised)\\RealTalk-Internet-Forum\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kosti\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Kosti\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

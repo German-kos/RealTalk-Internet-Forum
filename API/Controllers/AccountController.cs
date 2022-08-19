@@ -21,57 +21,65 @@ namespace API.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<AppUser>> Register([FromBody] UserEntity entity)
         {
-            if (_context.Users.FirstOrDefault(user => user.UserName.ToLower() == entity.username.ToLower()) != null)
-            {
-                return Unauthorized("User already exists");
-            }
-            else if (_context.Users.FirstOrDefault(user => user.Email.ToLower() == entity.email.ToLower()) != null)
-            {
-                return Unauthorized("Email already in use");
-            }
-            else
-            {
+            if (UserAlreadyExists(entity.username))
+                return BadRequest("This username is taken.");
+            byte[] passwordHash, passwordSalt;
 
-                using var hmac = new HMACSHA512();
-                var user = new AppUser
+            using (var hmac = new HMACSHA512())
+            {
+                passwordSalt = hmac.Key;
+                passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(entity.password));
+            }
+            AppUser user = new AppUser();
+            user.UserName = entity.username;
+            user.FirstName = entity.firstName;
+            user.LastName = entity.lastName;
+            user.Email = entity.email;
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
+            //
+            _context.Users.Add(user);
+            _context.SaveChanges();
+            return user;
+        }
+        [HttpPost("signin")]
+        public async Task<ActionResult<SignedInUser>> SignIn([FromBody] LoginForm entity)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(usr => usr.UserName.ToLower() == entity.username);
+            if (user == null)
+                return null;
+            if (!MatchPasswordHash(entity.password, user.PasswordHash, user.PasswordSalt))
+                return null;
+            var userResult = new SignedInUser()
+            {
+                id = user.id,
+                username = user.UserName,
+                firstName = user.FirstName,
+                lastName = user.LastName,
+                email = user.Email
+            };
+            return userResult;
+        }
+        private bool MatchPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
+        {
+            using (var hmac = new HMACSHA512(passwordSalt))
+            {
+                var passwordHashResult = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                for (int i = 0; i < passwordHashResult.Length; i++)
                 {
-                    UserName = entity.username,
-                    Email = entity.email,
-                    PasswordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(entity.password)),
-                    PasswordSalt = hmac.Key
-                };
-                _context.Users.Add(user);
-                _context.SaveChanges();
-                return user;
+                    if (passwordHashResult[i] != passwordHash[i])
+                        return false;
+                }
+                return true;
             }
         }
-        // public async Task<ActionResult<AppUser>> Login([FromBody] LoginForm form)
-        // {
-        //     if (_context.Users.FirstOrDefault(user => user.UserName.ToLower() == form.username.ToLower()) == null)
-        //     {
-        //         return Unauthorized("User does not exist.");
-        //     };
-        //     return Unauthorized("User does not exist.");
-
-        // }
-        // public bool MatchPassword(LoginForm form)
-        // {
-        //     var user = _context.Users.FirstOrDefault(user => user.UserName.ToLower() == form.username.ToLower());
-        //     if (user == null)
-        //         return false;
-        //     return true;
-        // }
-        [HttpGet("signin")]
-        public async Task<ActionResult<LoginForm>> SignIn([FromBody] LoginForm entity)
-        { // doesnt work
-            var userResult = _context.Users.FirstOrDefaultAsync(user => user.UserName.ToLower() == entity.username.ToLower());
-            using var hmac = new HMACSHA512();
-
-            var encryptInput = System.Text.Encoding.UTF8.GetBytes(entity.password + userResult.Result.PasswordSalt);
-            HMACSHA512 hmac1 = new HMACSHA512();
-            var encryptedInput = hmac1.ComputeHash(encryptInput);
-            entity.password = System.Text.Encoding.UTF8.GetString(encryptedInput);
-            return entity;
+        private bool UserAlreadyExists(string username)
+        {
+            var user = _context.Users.FirstOrDefault(usr => usr.UserName.ToLower() == username.ToLower());
+            if (user == null)
+                return false;
+            return true;
         }
     };
 }
+

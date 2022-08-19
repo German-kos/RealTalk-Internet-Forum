@@ -11,10 +11,10 @@ export const processSignInForm = (data: SignInData) => {
     usernameMatch: false,
     passwordMatch: false,
   };
-  axios
-    .get("https://localhost:5001/api/account/signin", {
-      username: data.username,
-      password: data.password,
-    })
-    .then((res) => console.log(res.data));
+  // axios
+  //   .get("https://localhost:5001/api/account/signin", {
+  //     username: data.username,
+  //     password: data.password,
+  //   })
+  //   .then((res) => console.log(res.data));
 };
