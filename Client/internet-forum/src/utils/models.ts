@@ -1,3 +1,5 @@
+import { StringLiteral } from "typescript";
+
 // an interface for the sign-in form.
 export interface SignInData {
   username: string;
@@ -10,3 +12,14 @@ export interface SignUpInterface {
   email: string;
 }
 //
+export interface ProcessResult {
+  usernameIsOkay: boolean;
+  passwordIsOkay: boolean;
+  resultMessageUsername: string;
+  resultMessagePassword: string;
+}
+//
+export interface FormErrorInterface {
+  usernameError: string;
+  passwordError: string;
+}
