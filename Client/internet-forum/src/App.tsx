@@ -3,14 +3,15 @@ import logo from "./logo.svg";
 import "./App.css";
 import CounterTest from "pages/counter-test-page";
 import SignIn from "pages/sign-in";
-
+import { Navbar } from "components";
 function App() {
   return (
-    <div className="App">
+    <div className="gradient__bg">
       Hello World!
-      <CounterTest />
+      {/* <CounterTest />
       <hr />
-      <SignIn />
+      <SignIn /> */}
+      <Navbar />
     </div>
   );
 }
