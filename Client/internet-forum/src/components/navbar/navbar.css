@@ -1,0 +1,18 @@
+.gpt3__navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2rem 6rem;
+}
+
+.gpt3__navbar-links {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+.gpt3__navbar-links_logo {
+  margin-right: 2rem;
+}
+.gpt3__navbar-links_logo img {
+  width: 64px;
+}

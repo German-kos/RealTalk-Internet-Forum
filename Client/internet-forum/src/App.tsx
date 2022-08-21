@@ -7,7 +7,6 @@ import { Navbar } from "components";
 function App() {
   return (
     <div className="gradient__bg">
-      Hello World!
       {/* <CounterTest />
       <hr />
       <SignIn /> */}
