@@ -1,6 +1,6 @@
 import React from "react";
 import "components/navbar/navbar.css";
-import logo from "assets/logo.png";
+import logo from "assets/logo_white.png";
 // import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
 function Navbar() {
   return (
@@ -9,18 +9,21 @@ function Navbar() {
         <div className="gpt3__navbar-links_logo">
           <img className="logo" src={logo} alt="logo" />
         </div>
-        <div className="gpt3__navbar-links_container"></div>
+        <div className="gpt3__navbar-links_container">
+          <p>
+            <a href="#home">Home</a>
+          </p>
+          <p>
+            <a href="#home">About</a>
+          </p>
+          <p>
+            <a href="#home">Sign Up</a>
+          </p>
+        </div>
+      </div>
+      <div className="gpt3__navbar-sign">
         <p>
-          <a href="#home">Home</a>
-        </p>
-        <p>
-          <a href="#home">Home</a>
-        </p>
-        <p>
-          <a href="#home">Home</a>
-        </p>
-        <p>
-          <a href="#home">Home</a>
+          <a href="#home">Sign In</a>
         </p>
       </div>
     </div>
