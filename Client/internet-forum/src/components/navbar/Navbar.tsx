@@ -14,16 +14,16 @@ function Navbar() {
             <a href="#home">Home</a>
           </p>
           <p>
-            <a href="#home">About</a>
+            <a href="#about">About</a>
           </p>
           <p>
-            <a href="#home">Sign Up</a>
+            <a href="#signup">Sign Up</a>
           </p>
         </div>
       </div>
       <div className="gpt3__navbar-sign">
         <p>
-          <a href="#home">Sign In</a>
+          <a href="#signin">Sign In</a>
         </p>
       </div>
     </div>
