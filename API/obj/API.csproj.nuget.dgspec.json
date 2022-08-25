@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "E:\\RealTalk(Revised)\\RealTalk-Internet-Forum\\API\\API.csproj": {}
+    "D:\\RealTalk-Internet-Forum\\API\\API.csproj": {}
   },
   "projects": {
-    "E:\\RealTalk(Revised)\\RealTalk-Internet-Forum\\API\\API.csproj": {
+    "D:\\RealTalk-Internet-Forum\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\RealTalk(Revised)\\RealTalk-Internet-Forum\\API\\API.csproj",
+        "projectUniqueName": "D:\\RealTalk-Internet-Forum\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "E:\\RealTalk(Revised)\\RealTalk-Internet-Forum\\API\\API.csproj",
+        "projectPath": "D:\\RealTalk-Internet-Forum\\API\\API.csproj",
         "packagesPath": "C:\\Users\\Kosti\\.nuget\\packages\\",
-        "outputPath": "E:\\RealTalk(Revised)\\RealTalk-Internet-Forum\\API\\obj\\",
+        "outputPath": "D:\\RealTalk-Internet-Forum\\API\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Kosti\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Kosti\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
