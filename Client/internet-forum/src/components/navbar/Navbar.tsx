@@ -4,27 +4,26 @@ import logo from "assets/logo_white.png";
 // import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
 function Navbar() {
   return (
-    <div className="gpt3__navbar">
-      <div className="gpt3__navbar-links">
-        <div className="gpt3__navbar-links_logo">
-          <img className="logo" src={logo} alt="logo" />
-        </div>
-        <div className="gpt3__navbar-links_container">
+    <div className="navbar">
+      <div className="navbar-links">
+        <div className="navbar-links_container">
           <p>
             <a href="#home">Home</a>
           </p>
           <p>
             <a href="#about">About</a>
           </p>
-          <p>
-            <a href="#signup">Sign Up</a>
-          </p>
+          <p></p>
         </div>
       </div>
-      <div className="gpt3__navbar-sign">
+      <div className="navbar-links_logo">
+        <img className="logo" src={logo} alt="logo" />
+      </div>
+      <div className="navbar-sign">
         <p>
           <a href="#signin">Sign In</a>
         </p>
+        <button type="button">Sign Up</button>
       </div>
     </div>
   );

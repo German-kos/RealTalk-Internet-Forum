@@ -1,13 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Silkscreen&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"); */
+/* @import url("https://fonts.googleapis.com/css2?family=Silkscreen&display=swap"); */
+@import url("http://fonts.cdnfonts.com/css/product-sans");
 
 :root {
-  --font-family: "Manrope", sans-serif;
+  --font-family: "product-sans", sans-serif;
   /* --font-family: "Silkscreen", cursive; */
   --gradient-text: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%);
   --gradient-bar: linear-gradient(103.22deg, #ae67fa -13.86%, #f49867 99.55%);
 
-  --color-bg: #040c18;
+  --color-bg: #0e011a;
   --color-footer: #031b34;
   --color-blog: #042c54;
   --color-text: #81afdd;
