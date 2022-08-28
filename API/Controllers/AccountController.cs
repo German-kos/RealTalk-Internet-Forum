@@ -75,7 +75,7 @@ namespace API.Controllers
                     Username = user.UserName,
                     FirstName = user.FirstName,
                     LastName = user.LastName,
-                    Email = user.LastName
+                    Email = user.Email
                 };
                 return signInUser;
             }
