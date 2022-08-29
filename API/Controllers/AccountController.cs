@@ -53,12 +53,13 @@ namespace API.Controllers
         // Sign in controller for the application
         // As of right now, the sign-in controller expects to get these fields from the requests:
         // username, password. both fields are requires.
-        // The controller first looks for a user with the matching username in the DB,
-        // if it finds a user, it then uses the hashSalt from user found in the DB, and encrypts the password that was
-        // passed from the sign in request.
-        // It then compares the two encrypted passwords, the one from the DB user, and the second from the sign in request.
-        // If the hashes match, a DTO object is passed with the non-sensitive data related to the user.
-        // If the hashes do not match, a an http unauthorized error is returned instead.
+        // The controller first checks with the DB if the username passed in the request matches an existing one.
+        // In the case it doesn't unauthorized is returned.
+        // in the case it does match an existing username, the controller passes the password hash and salt, from the user found
+        // in the DB, as well as the password passed in the request.
+        // If the PasswordsMatch function returns true, the client recieves a SingedInUserDTO obj that contains the safe for public
+        // information.
+        // In the case the PasswordsMatch function returns false, an unauthorized is returned instead.
         public async Task<ActionResult<SignedInUserDTO>> SignIn(SignInDTO signInDTO)
         {
             // get user from db
