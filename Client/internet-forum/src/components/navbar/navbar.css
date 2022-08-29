@@ -104,8 +104,17 @@
     display: none;
   }
 
+  .navbar-links {
+    display: none;
+  }
+
   .navbar-menu {
     display: flex;
+  }
+
+  .navbar-links_logo {
+    display: flex;
+    justify-content: flex-start;
   }
 }
 

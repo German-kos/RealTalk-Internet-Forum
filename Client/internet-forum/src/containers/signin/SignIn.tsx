@@ -1,7 +1,15 @@
 import React from "react";
 import "containers/signin/signin.css";
+import SignInForm from "components/signin-form/SignInForm";
 function SignIn() {
-  return <div>SignIn</div>;
+  return (
+    <div className="sign-in_container">
+      SignIn
+      <div>
+        <SignInForm />
+      </div>
+    </div>
+  );
 }
 
 export default SignIn;

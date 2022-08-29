@@ -41,28 +41,30 @@ function SignIn() {
     //
   });
   return (
-    <form onSubmit={onSubmit}>
-      <label>Username</label>
-      <input {...register("username", { required: true })} />
-      {errors.username && (
-        <div className="error">
-          {errors.username.message === ""
-            ? "Required field"
-            : errors.username.message}
-        </div> // add a fn to decide whether to show error message or 'required field'
-      )}
-      <label>Password</label>
-      <input {...register("password", { required: true })} />
-      {errors.password && (
-        <div className="error">
-          {errors.password.message === ""
-            ? "Required field."
-            : errors.password.message}
-        </div>
-      )}
+    <div className="sign-in_background sign-in_container">
+      <form onSubmit={onSubmit}>
+        <label>Username</label>
+        <input {...register("username", { required: true })} />
+        {errors.username && (
+          <div className="error">
+            {errors.username.message === ""
+              ? "Required field"
+              : errors.username.message}
+          </div> // add a fn to decide whether to show error message or 'required field'
+        )}
+        <label>Password</label>
+        <input {...register("password", { required: true })} />
+        {errors.password && (
+          <div className="error">
+            {errors.password.message === ""
+              ? "Required field."
+              : errors.password.message}
+          </div>
+        )}
 
-      <button type="submit">Sign In</button>
-    </form>
+        <button type="submit">Sign In</button>
+      </form>
+    </div>
   );
 }
 export default SignIn;
