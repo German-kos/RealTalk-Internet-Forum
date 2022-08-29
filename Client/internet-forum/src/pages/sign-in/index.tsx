@@ -3,7 +3,7 @@ import "pages/sign-in/style.css";
 import { useState } from "react";
 import { appendErrors, useForm } from "react-hook-form";
 import { processSignInForm } from "utils/helpers";
-import { FormErrorInterface, SignInData } from "utils/models";
+import { FormErrorInterface, SignInInterface } from "utils/models";
 //
 interface Erroring {
   type: string;
@@ -16,7 +16,7 @@ function SignIn() {
     handleSubmit,
     setError,
     formState: { errors },
-  } = useForm<SignInData>();
+  } = useForm<SignInInterface>();
   //
   const onSubmit = handleSubmit((data) => {
     const processResult = processSignInForm(data.username, data.password);

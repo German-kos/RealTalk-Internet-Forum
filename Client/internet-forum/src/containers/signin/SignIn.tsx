@@ -4,7 +4,6 @@ import SignInForm from "components/signin-form/SignInForm";
 function SignIn() {
   return (
     <div className="sign-in_container">
-      SignIn
       <div>
         <SignInForm />
       </div>

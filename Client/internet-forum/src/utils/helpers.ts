@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ProcessResult, SignInData } from "./models";
+import { ProcessResult, SignInInterface } from "./models";
 import { validUsername } from "./regex";
 //
 

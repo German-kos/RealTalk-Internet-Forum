@@ -1,7 +1,7 @@
 import { StringLiteral } from "typescript";
 
 // an interface for the sign-in form.
-export interface SignInData {
+export interface SignInInterface {
   username: string;
   password: string;
 }

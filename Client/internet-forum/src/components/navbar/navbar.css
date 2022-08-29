@@ -6,16 +6,12 @@
 }
 
 .navbar-links {
-  /* flex: 1; */
   display: flex;
-  /* justify-content: flex-start; */
 }
 
 .navbar-links_logo {
-  /* margin-right: 2rem; */
   display: flex;
   justify-content: center;
-  /* align-items: center; */
 }
 
 .navbar-links_logo img {

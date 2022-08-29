@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import "components/navbar/navbar.css";
 import logo from "assets/logo_white.png";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 function Navbar() {
+  const navigate = useNavigate();
   // the state which controls the menu in the navbar
   const [toggleMenu, setToggleMenu] = useState<boolean>(false);
   // toggleMenu => true - for opening the menu
@@ -20,6 +22,10 @@ function Navbar() {
       </p>
     </>
   );
+  const navToSignIn = () => {
+    console.log("here");
+    return navigate("/signin");
+  };
   return (
     <div className="navbar">
       <div className="navbar-links">
@@ -32,7 +38,7 @@ function Navbar() {
       </div>
       <div className="navbar-sign">
         <p>
-          <a href="#signin">Sign In</a>
+          <a onClick={navToSignIn}>Sign In</a>
         </p>
         <button type="button">Sign Up</button>
       </div>
@@ -56,7 +62,7 @@ function Navbar() {
               <Menu />
               <div className="navbar-menu_container-links-sign">
                 <p>
-                  <a href="#signin">Sign In</a>
+                  <a onClick={navToSignIn}>Sign In</a>
                 </p>
                 <button type="button">Sign Up</button>
               </div>
