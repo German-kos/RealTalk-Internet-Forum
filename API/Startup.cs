@@ -58,7 +58,7 @@ namespace API
 
             app.UseRouting();
 
-            app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:3000")); // cors with react app
+            app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000")); // cors with react app
 
             app.UseAuthorization();
 

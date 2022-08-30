@@ -6,9 +6,13 @@ import logo from "assets/logo_white_svg.svg";
 import { useNavigate } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import axios from "axios";
+import { useSelector } from "react-redux";
+import { SelectUser, signIn, UserState } from "redux/slices/UserSlice";
+import store from "redux/store";
+//
 function SignInForm() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
-
   const navigate = useNavigate();
   const {
     register,
@@ -17,8 +21,37 @@ function SignInForm() {
     formState: { errors },
   } = useForm<SignInInterface>();
   //
-  const submitSignIn = handleSubmit((data) => {
-    console.log(data);
+  const submitSignIn = handleSubmit(async (data) => {
+    // axios
+    //   .get("https://localhost:5001/api/users", { "Content-Type": "text/plain" })
+    //   .then(
+    //     (response) =>
+    //       setTableContents(response.data) & console.log(response.data)
+    //   );
+    await axios({
+      method: "post",
+      url: "https://localhost:5001/api/account/signin",
+      headers: { "Content-Type": "application/json" },
+      data: {
+        username: data.username,
+        password: data.password,
+      },
+    })
+      .then(function (response) {
+        console.log(response.data);
+        const recievedUser: UserState = {
+          id: response.data.id,
+          UserName: response.data.username,
+          FirstName: response.data.firstName,
+          LastName: response.data.lastName,
+          Email: response.data.email,
+        };
+        store.dispatch(signIn(recievedUser));
+        navigate("/");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   });
   //
   const navToSignUp = () => navigate("/signup");

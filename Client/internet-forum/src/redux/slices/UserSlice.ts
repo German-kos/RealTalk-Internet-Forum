@@ -1,9 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
 import { RootState } from "redux/store";
 
 // The interface for the logged in user.
-interface UserState {
+export interface UserState {
   id?: number;
   UserName?: string;
   FirstName?: string;
@@ -43,6 +42,6 @@ export const userSlice = createSlice({
 //
 export const { signIn, signOut } = userSlice.actions;
 //
-export const SelectUser = (state: RootState) => state.user;
+export const SelectUser = (state: RootState) => state.rootReducer.user;
 //
 export default userSlice.reducer;

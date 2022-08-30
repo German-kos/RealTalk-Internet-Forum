@@ -7,3 +7,7 @@ gradient: #2A014E
 background: #0E011A
 trim: #8b33d4
 complemantory: #eb6635
+
+test user:
+username: john1
+password: 112233
