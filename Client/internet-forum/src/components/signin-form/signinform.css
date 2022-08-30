@@ -14,6 +14,31 @@
   -webkit-backdrop-filter: blur(5.4px);
 }
 
+.sign-in_form_not-a-member {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  font-size: 18px;
+}
+
+.sign-in_form_not-a-member a {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #eb6635;
+}
+.sign-in_form_error {
+  position: absolute;
+  margin-top: 70px;
+  color: red;
+  font-size: 14px;
+  width: 150px;
+}
+
+.sign-in_form_error element {
+  width: 150px;
+}
+
 .sign-in_form {
   display: flex;
   color: #fff;
@@ -24,10 +49,17 @@
   box-sizing: border-box;
 }
 
+.eye-button {
+  position: absolute;
+  margin-left: 380px;
+  margin-top: 35px;
+  cursor: pointer;
+}
 .sign-in_form input {
   max-width: 100%;
   font-size: 18px;
   padding: 0.5rem 1rem;
+  padding-right: 50px;
   border-radius: 5px;
   box-sizing: border-box;
   background-color: #835ea2;
@@ -46,9 +78,11 @@
   margin-bottom: 1.5rem;
   flex-direction: column;
   gap: 5px;
-  width: 100%;
+  /* width: 100%; */
 }
-
+.sign-in_form_input_section {
+  margin-top: 15px;
+}
 .sign-in_form_logo {
   display: flex;
   width: 150px;
@@ -63,6 +97,7 @@
 }
 
 .sign-in_form_container button {
+  margin-top: 2rem;
   background: #eb6635;
   font-family: var(--font-family);
   font-weight: 550;
@@ -97,6 +132,11 @@
 
   .sign-in_form input {
     width: 400px;
+    padding-right: 40px;
+  }
+
+  .eye-button {
+    margin-left: 365px;
   }
 }
 
@@ -113,8 +153,27 @@
   }
 
   .sign-in_form_logo {
-    width: 125px;
-    height: 125px;
+    width: 90px;
+    height: 90px;
+  }
+
+  .sign-in_form_error {
+    font-size: 12px;
+    margin-top: 60px;
+  }
+
+  .sign-in_form_not-a-member {
+    font-size: 14px;
+  }
+
+  .eye-button {
+    margin-left: 165px;
+    margin-top: 28px;
+  }
+
+  .sign-in_form_container button {
+    width: 150px;
+    font-size: 14px;
   }
 }
 

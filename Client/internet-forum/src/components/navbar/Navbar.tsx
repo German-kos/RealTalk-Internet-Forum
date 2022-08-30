@@ -22,10 +22,7 @@ function Navbar() {
       </p>
     </>
   );
-  const navToSignIn = () => {
-    console.log("here");
-    return navigate("/signin");
-  };
+  const navToSignIn = () => navigate("/signin");
   return (
     <div className="navbar">
       <div className="navbar-links">
