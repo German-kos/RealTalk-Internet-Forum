@@ -21,6 +21,7 @@ a {
     rgba(42, 1, 78, 1) 0%,
     rgba(14, 1, 26, 1) 100%
   );
+  height: 100vh;
 
   /* safari 5.1+,chrome 10+ */
   background: -webkit-radial-gradient(
