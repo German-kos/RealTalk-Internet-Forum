@@ -23,6 +23,7 @@ function Navbar() {
     </>
   );
   const navToSignIn = () => navigate("/signin");
+  const navToSignUp = () => navigate("/signup");
   return (
     <div className="navbar">
       <div className="navbar-links">
@@ -37,7 +38,9 @@ function Navbar() {
         <p>
           <a onClick={navToSignIn}>Sign In</a>
         </p>
-        <button type="button">Sign Up</button>
+        <button type="button" onClick={navToSignUp}>
+          Sign Up
+        </button>
       </div>
       <div className="navbar-menu">
         {toggleMenu ? (
@@ -61,7 +64,9 @@ function Navbar() {
                 <p>
                   <a onClick={navToSignIn}>Sign In</a>
                 </p>
-                <button type="button">Sign Up</button>
+                <button type="button" onClick={navToSignUp}>
+                  Sign Up
+                </button>
               </div>
             </div>
           </div>

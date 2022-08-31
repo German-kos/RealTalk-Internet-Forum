@@ -1,0 +1,5 @@
+.sign-up_container {
+  background-image: url("../../assets/signupbg.svg");
+  height: 100vh;
+  background-position: top;
+}

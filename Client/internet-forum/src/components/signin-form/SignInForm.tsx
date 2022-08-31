@@ -22,12 +22,6 @@ function SignInForm() {
   } = useForm<SignInInterface>();
   //
   const submitSignIn = handleSubmit(async (data) => {
-    // axios
-    //   .get("https://localhost:5001/api/users", { "Content-Type": "text/plain" })
-    //   .then(
-    //     (response) =>
-    //       setTableContents(response.data) & console.log(response.data)
-    //   );
     await axios({
       method: "post",
       url: "https://localhost:5001/api/account/signin",
@@ -97,7 +91,7 @@ function SignInForm() {
             )}
           </div>
           <div>
-            <button type="submit">SIGN-IN</button>
+            <button type="submit">SIGNIN</button>
           </div>
           <div className="sign-in_form_not-a-member">
             <p>Not a member?</p>
