@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using API.Data;
 using API.DTOs;
 using API.Entities;
+using API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,8 +16,10 @@ namespace API.Controllers
     {
         UtilityClass utilities = UtilityClass.GetInstance();
         private readonly DataContext _context;
-        public AccountController(DataContext context)
+        public ITokenService _tokenService { get; }
+        public AccountController(DataContext context, ITokenService tokenService)
         {
+            _tokenService = tokenService;
             _context = context;
         }
         [HttpPost("register")]
@@ -29,7 +32,7 @@ namespace API.Controllers
         // The controller creates a new instance of the AppUser class, and adds the inserted data into it.
         // For the password, it encrypts it using HMACSHA512, and instead of saving the password to the DB,
         // it saves the hash and salt from the encryption.
-        public async Task<ActionResult<AppUser>> Register(RegisterDTO registerDTO)
+        public async Task<ActionResult<UserDTO>> Register(RegisterDTO registerDTO)
         {
             if (await UserAlreadyExists(registerDTO.Username))
                 return BadRequest("This username is taken.");
@@ -47,7 +50,11 @@ namespace API.Controllers
             //
             _context.Users.Add(user);
             _context.SaveChanges();
-            return user;
+            return new UserDTO
+            {
+                UserName = registerDTO.Username,
+                Token = _tokenService.CreateToken(user)
+            };
         }
         [HttpPost("signin")]
         // Sign in controller for the application
@@ -63,7 +70,7 @@ namespace API.Controllers
         public async Task<ActionResult<SignedInUserDTO>> SignIn(SignInDTO signInDTO)
         {
             // get user from db
-            var user = await _context.Users.SingleOrDefaultAsync(user => user.UserName.ToLower() == signInDTO.Username.ToLower());
+            AppUser user = await _context.Users.SingleOrDefaultAsync(user => user.UserName.ToLower() == signInDTO.Username.ToLower());
             if (user == null)
                 return Unauthorized("Invalid username or password");
 
@@ -77,8 +84,17 @@ namespace API.Controllers
                     FirstName = user.FirstName,
                     LastName = user.LastName,
                     Email = user.Email
+
                 };
-                return signInUser;
+                return new SignedInUserDTO
+                {
+                    Id = user.id,
+                    Username = user.UserName,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Email = user.Email,
+                    Token = _tokenService.CreateToken(user)
+                };
             }
             else return Unauthorized("Invalid username or password");
         }
