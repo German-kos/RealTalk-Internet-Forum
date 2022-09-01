@@ -8,6 +8,9 @@ background: #0E011A
 trim: #8b33d4
 complemantory: #eb6635
 
-test user:
+test users:
 username: john1
 password: 112233
+
+username: jane1
+password: base64

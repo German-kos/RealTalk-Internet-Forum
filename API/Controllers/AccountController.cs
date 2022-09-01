@@ -14,9 +14,9 @@ namespace API.Controllers
 {
     public class AccountController : BaseApiController
     {
-        UtilityClass utilities = UtilityClass.GetInstance();
+        // UtilityClass utilities = UtilityClass.GetInstance();
         private readonly DataContext _context;
-        public ITokenService _tokenService { get; }
+        private readonly ITokenService _tokenService;
         public AccountController(DataContext context, ITokenService tokenService)
         {
             _tokenService = tokenService;

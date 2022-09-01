@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\RealTalk-Internet-Forum\\API\\API.csproj": {}
+    "D:\\RealTalk-Internet-Forum\\API\\API.csproj": {}
   },
   "projects": {
-    "d:\\RealTalk-Internet-Forum\\API\\API.csproj": {
+    "D:\\RealTalk-Internet-Forum\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\RealTalk-Internet-Forum\\API\\API.csproj",
+        "projectUniqueName": "D:\\RealTalk-Internet-Forum\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "d:\\RealTalk-Internet-Forum\\API\\API.csproj",
+        "projectPath": "D:\\RealTalk-Internet-Forum\\API\\API.csproj",
         "packagesPath": "C:\\Users\\Kosti\\.nuget\\packages\\",
-        "outputPath": "d:\\RealTalk-Internet-Forum\\API\\obj\\",
+        "outputPath": "D:\\RealTalk-Internet-Forum\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Kosti\\AppData\\Roaming\\NuGet\\NuGet.Config"
