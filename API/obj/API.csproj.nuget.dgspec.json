@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\RealTalk-Internet-Forum\\API\\API.csproj": {}
+    "d:\\RealTalk-Internet-Forum\\API\\API.csproj": {}
   },
   "projects": {
-    "D:\\RealTalk-Internet-Forum\\API\\API.csproj": {
+    "d:\\RealTalk-Internet-Forum\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\RealTalk-Internet-Forum\\API\\API.csproj",
+        "projectUniqueName": "d:\\RealTalk-Internet-Forum\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "D:\\RealTalk-Internet-Forum\\API\\API.csproj",
+        "projectPath": "d:\\RealTalk-Internet-Forum\\API\\API.csproj",
         "packagesPath": "C:\\Users\\Kosti\\.nuget\\packages\\",
-        "outputPath": "D:\\RealTalk-Internet-Forum\\API\\obj\\",
+        "outputPath": "d:\\RealTalk-Internet-Forum\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Kosti\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -38,6 +38,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -55,6 +59,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.22.1, )"
             }
           },
           "imports": [
