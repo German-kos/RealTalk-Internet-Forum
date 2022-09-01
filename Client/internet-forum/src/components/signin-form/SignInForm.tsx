@@ -39,6 +39,7 @@ function SignInForm() {
           FirstName: response.data.firstName,
           LastName: response.data.lastName,
           Email: response.data.email,
+          Token: response.data.email,
         };
         store.dispatch(signIn(recievedUser));
         navigate("/");
