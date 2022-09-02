@@ -73,7 +73,7 @@
   border-radius: 5px;
   box-sizing: border-box;
   background-color: #835ea2;
-  outline: rgba(250, 250, 250, 0.7), solid, 0.3px;
+  /* outline: rgba(250, 250, 250, 0.7), solid, 0.3px; */
   border: 0.2px solid rgb(226, 200, 248, 0.3);
   color: white;
 }
@@ -81,4 +81,12 @@
 .sign-up_form label {
   font-size: 18px;
   font-weight: 550;
+}
+
+.sign-up_form_error {
+  position: absolute;
+  margin-top: 70px;
+  color: red;
+  font-size: 14px;
+  width: 150px;
 }
