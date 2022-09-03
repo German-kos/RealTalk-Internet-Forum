@@ -13,7 +13,12 @@ export default function SignUpForm() {
     setError,
     formState: { errors },
   } = useForm<SignUpInterface>();
-  //
+  // remove the useForm hook and instead make a function to check
+  // whether the fields are empty or not.
+  // if they are trigger a css class to make the input outlined
+  // in red, and add a div with an error message.
+  // if the fields are valid and the username and email are not taken
+  // make an axios post request to register the account
   const submitSignUp = handleSubmit(async (data) => {
     console.log(data);
   });
