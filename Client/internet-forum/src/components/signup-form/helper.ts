@@ -49,6 +49,7 @@ export const processSignUpForm = (
   // regexes
   const usernameRegex = /[^A-Za-z0-9]+/;
   const englishRegex = /^[a-zA-Z]*$/g;
+  // const englishRegex = /^[a-zA-Z\s]*$/g;
   const whitespaceRegex = /\s/;
   const emailRegex =
     /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
@@ -105,20 +106,36 @@ export const processSignUpForm = (
     });
   }
 
+  // make a function out of this
   if (target.firstName.value.trim().length === 0) {
     processResult.haltSignUp = true;
     signUpHooks.setFirstNameError(requiredFieldError);
-  } else if (!englishRegex.test(target.firstName.value)) {
+  } else if (target.firstName.value.match(englishRegex) === null) {
     signUpHooks.setFirstNameError(englishOnly);
   }
 
   if (target.lastName.value.trim().length === 0) {
     processResult.haltSignUp = true;
     signUpHooks.setLastNameError(requiredFieldError);
-  } else if (!englishRegex.test(target.lastName.value)) {
+  } else if (target.lastName.value.match(englishRegex) === null) {
     signUpHooks.setLastNameError(englishOnly);
   }
+  console.log(target.firstName.value.match(englishRegex));
 
+  // console.log(target.lastName.value.length);
+  // console.log(target.lastName.value);
+  // console.log(!englishRegex.test(target.lastName.value));
+  // console.log("first");
+  // console.log(!englishRegex.test(target.lastName.value));
+  // console.log(target.lastName.value);
+
+  // if (target.lastName.value.trim().length === 0) {
+  //   processResult.haltSignUp = true;
+  //   signUpHooks.setLastNameError(requiredFieldError);
+  // } else if (!englishRegex.test(target.lastName.value)) {
+  //   console.log(target.lastName.value);
+  //   signUpHooks.setLastNameError(englishOnly);
+  // }
   return processResult;
 };
 

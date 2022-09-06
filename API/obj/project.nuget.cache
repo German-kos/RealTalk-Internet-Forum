@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/SxoVPe6RRWT2ECneiXEoJx6iO+C2UROM8juQkl/rnxq2zxck84x/5izOy5iNUaqOe6E41Y4WtdJdQo4CgvsLQ==",
+  "dgSpecHash": "lH5KVGLjzRJL/AdXuibUBzDKCQsYGskCm/47755v6xp86hdOez1pP/NVR1N6kfQIrSzCTFuhdfaPZ4DOtN99bw==",
   "success": true,
-  "projectFilePath": "D:\\RealTalk-Internet-Forum\\API\\API.csproj",
+  "projectFilePath": "E:\\RealTalk(Revised)\\RealTalk-Internet-Forum\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kosti\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Kosti\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.17\\microsoft.aspnetcore.authentication.jwtbearer.5.0.17.nupkg.sha512",
