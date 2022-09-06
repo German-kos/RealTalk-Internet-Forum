@@ -11,7 +11,9 @@ import { processSignUpForm, setError } from "./helper";
 // import { inputChangeHandler } from "./helper";
 //
 export default function SignUpForm() {
+  // router navigate hook
   const navigate = useNavigate();
+
   // the default sate of the error handling states
   const defaultErrorState: SignUpFormError = {
     error: false,

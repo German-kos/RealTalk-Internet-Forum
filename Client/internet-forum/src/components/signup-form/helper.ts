@@ -46,6 +46,7 @@ export const processSignUpForm = (
   // to stop the sign up request, and ask the user to refill the form
   const processResult: IProcessSignUpResult = { haltSignUp: false };
 
+  // regexes
   const usernameRegex = /[^A-Za-z0-9]+/;
   const englishRegex = /^[a-zA-Z]*$/g;
   const whitespaceRegex = /\s/;
@@ -64,11 +65,12 @@ export const processSignUpForm = (
     errorMsg: "Spaces are not allowed",
   };
 
-  // a
+  // an only english allowed error for the error state hooks
   const englishOnly: SignUpFormError = {
     error: true,
     errorMsg: "Field must contains only english characters",
   };
+
   // tests for if the field are empty, checks for whitespaces, and english letters
   // *password test only checks for an empty field and a length over 8
   if (target.username.value.trim().length === 0) {
