@@ -59,8 +59,14 @@ export const processSignUpForm = (
   const processResult: ISignUpProcessResult = { haltSignUp: false };
 
   // regexes
+<<<<<<< HEAD
   const usernameRegex = /^(?=.{4,18}$)[a-zA-Z0-9._]+$/g;
   const englishRegex = /^(?=.{1,18}$)[a-zA-Z]*$/g;
+=======
+  const usernameRegex = /^[A-Za-z0-9]+$/g;
+  const englishRegex = /^[a-zA-Z]*$/g;
+  // const englishRegex = /^[a-zA-Z\s]*$/g;
+>>>>>>> 8d8bf5d678d2773ba967012c220f9a3fdcf299f9
   const whitespaceRegex = /\s/;
   const emailRegex =
     /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
