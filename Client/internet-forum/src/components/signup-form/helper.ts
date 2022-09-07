@@ -122,20 +122,6 @@ export const processSignUpForm = (
   }
   console.log(target.firstName.value.match(englishRegex));
 
-  // console.log(target.lastName.value.length);
-  // console.log(target.lastName.value);
-  // console.log(!englishRegex.test(target.lastName.value));
-  // console.log("first");
-  // console.log(!englishRegex.test(target.lastName.value));
-  // console.log(target.lastName.value);
-
-  // if (target.lastName.value.trim().length === 0) {
-  //   processResult.haltSignUp = true;
-  //   signUpHooks.setLastNameError(requiredFieldError);
-  // } else if (!englishRegex.test(target.lastName.value)) {
-  //   console.log(target.lastName.value);
-  //   signUpHooks.setLastNameError(englishOnly);
-  // }
   return processResult;
 };
 
