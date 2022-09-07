@@ -1,7 +1,7 @@
 // imports
 import {
   AggragatedSignUpHooksInterface,
-  IProcessSignUpResult,
+  ISignUpProcessResult,
   ProcessResult,
   SignUpFormError,
   SignUpInterface,

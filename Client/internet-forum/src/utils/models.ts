@@ -47,6 +47,6 @@ export interface AggragatedSignUpHooksInterface {
   setLastNameError: React.Dispatch<React.SetStateAction<SignUpFormError>>;
 }
 // process result interface for the processSignUpForm helper function
-export interface IProcessSignUpResult {
+export interface ISignUpProcessResult {
   haltSignUp: boolean;
 }
