@@ -92,7 +92,7 @@ function SignInForm() {
             )}
           </div>
           <div>
-            <button type="submit">SIGNIN</button>
+            <button type="submit">SIGN IN</button>
           </div>
           <div className="sign-in_form_not-a-member">
             <p>Not a member?</p>

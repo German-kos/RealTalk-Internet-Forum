@@ -47,7 +47,7 @@ export const processSignUpForm = (
   const processResult: IProcessSignUpResult = { haltSignUp: false };
 
   // regexes
-  const usernameRegex = /[^A-Za-z0-9]+/;
+  const usernameRegex = /^[A-Za-z0-9]+$/g;
   const englishRegex = /^[a-zA-Z]*$/g;
   // const englishRegex = /^[a-zA-Z\s]*$/g;
   const whitespaceRegex = /\s/;
