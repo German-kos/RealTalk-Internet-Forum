@@ -15,7 +15,7 @@ function RoutesWrapper() {
           <Route element={<Layout />}>
             <Route index element={<Home />} />
           </Route>
-          <Route path="/signin" element={<SignIn />} />
+          {/* <Route path="/signin" element={<SignIn />} /> */}
           <Route path="/signup" element={<SignUp />} />
         </Routes>
       </AnimatePresence>

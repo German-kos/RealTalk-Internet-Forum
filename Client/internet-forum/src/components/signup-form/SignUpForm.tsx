@@ -54,6 +54,7 @@ export default function SignUpForm() {
   //
   const navToSignIn = () => navigate("/signin");
   //
+  // *** make a map to map all the fields instead of writing them
   return (
     <div className="sign-up_flex_container">
       <div className="sign-up_form_container">

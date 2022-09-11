@@ -1,41 +1,9 @@
-import { current } from "@reduxjs/toolkit";
 import {
   AggragatedSignUpHooksInterface,
   ISignUpProcessResult,
   SignUpFormError,
   SignUpInterface,
 } from "utils/models";
-
-// // change handler for the inputs
-// export const inputChangeHandler = (
-//   e: React.SyntheticEvent<HTMLInputElement>, // the event that invoked this handler (for signUpErrorHelper)
-//   errorSetter: React.Dispatch<React.SetStateAction<SignUpFormError>>, // error state setter corelated to this field (for signUpErrorHelper)
-//   newErrorState: SignUpFormError, // the desired state for the error (for signUpErrorHelper)
-//   currentErrorState: SignUpFormError, // the current state of the error (for signUpErrorHelper)
-//   input: string | undefined, // the value state of the input that invoked this handler (for removeWhiteSpace)
-//   setInput: React.Dispatch<React.SetStateAction<string | undefined>> // the value setter of the event that invoked this handler (for removeWhiteSpace)
-// ) => {
-//   setInput;
-//   removeWhiteSpaces(e, setInput);
-//   signUpErrorHelper(e, errorSetter, newErrorState, currentErrorState);
-// };
-
-// // a function that handles whitespace prevention in input fields
-// export const removeWhiteSpaces = (
-//   //   input: string | undefined,
-//   e: React.SyntheticEvent<HTMLInputElement>,
-//   setInput: React.Dispatch<React.SetStateAction<string | undefined>>
-// ) => {
-//   const testInput: string | undefined = e.currentTarget.value?.replace(
-//     /\s/g,
-//     ""
-//   );
-//   console.log(e.currentTarget.value);
-//   if (testInput !== e.currentTarget.value) {
-//     console.log("here");
-//     setInput(testInput);
-//   }
-// };
 
 // a helper function to process the sign up form, and check for any errors in it's fields.
 export const processSignUpForm = (
@@ -58,10 +26,14 @@ export const processSignUpForm = (
   // to stop the sign up request, and ask the user to refill the form
   const processResult: ISignUpProcessResult = { haltSignUp: false };
 
+  // function to halt sign up process
+  const haltSignUp = (): void => {
+    processResult.haltSignUp = true;
+  };
+
   // regexes
   const usernameRegex = /^(?=.{4,18}$)[a-zA-Z0-9._]+$/g;
   const englishRegex = /^(?=.{1,18}$)[a-zA-Z]*$/g;
-  const whitespaceRegex = /\s/;
   const emailRegex =
     /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
 
@@ -96,28 +68,21 @@ export const processSignUpForm = (
   };
 
   // field is too short error
-  const shortError: SignUpFormError = {
+  const usernameLengthErrror: SignUpFormError = {
     error: true,
     errorMsg: "Username should be 4 to 20 characters long",
   };
 
-  // tests for if the field are empty, checks for whitespaces, and english letters
-  // *password test only checks for an empty field and a length over 8
-  // if (target.username.value.trim().length === 0) {
-  //   processResult.haltSignUp = true;
-  //   signUpHooks.setUsernameError(requiredFieldError);
-  // } else if (whitespaceRegex.test(target.username.value)) {
-  //   signUpHooks.setUsernameError(whitespaceError);
-  // } else if (usernameRegex.test(target.username.value)) {
-  //   signUpHooks.setUsernameError({
-  //     error: true,
-  //     errorMsg: "Only english and numbers are allowed",
-  //   });
-  // }
+  // password length error
+  const passwordLengthError: SignUpFormError = {
+    error: true,
+    errorMsg: "Password must be at least 8 characters",
+  };
 
+  // username test
   if (username.value.length <= 3) {
-    setUsernameError(shortError);
-    processResult.haltSignUp = true;
+    haltSignUp();
+    setUsernameError(usernameLengthErrror);
   } else {
     checkField(
       username,
@@ -125,64 +90,77 @@ export const processSignUpForm = (
       requiredFieldError,
       inputError,
       usernameRegex,
-      processResult
+      processResult,
+      haltSignUp
     );
   }
 
+  // email test
   checkField(
     email,
     setEmailError,
     requiredFieldError,
     emailError,
     emailRegex,
-    processResult
+    processResult,
+    haltSignUp
   );
 
-  if (target.password.value.trim().length === 0) {
+  // password test
+  if (password.value.trim().length === 0) {
     processResult.haltSignUp = true;
     signUpHooks.setPasswordError(requiredFieldError);
-  } else if (target.password.value.length < 8) {
-    signUpHooks.setPasswordError({
-      error: true,
-      errorMsg: "Password must be at least 8 characters",
-    });
+  } else if (passwordLengthCheck(password)) {
+    setPasswordError(passwordLengthError);
   }
 
+  // first name test
   checkField(
     firstName,
     setFirstNameError,
     requiredFieldError,
     englishOnly,
     englishRegex,
-    processResult
+    processResult,
+    haltSignUp
   );
 
+  // last name test
   checkField(
     lastName,
     setLastNameError,
     requiredFieldError,
     englishOnly,
     englishRegex,
-    processResult
+    processResult,
+    haltSignUp
   );
 
   return processResult;
 };
-
+// a function to check whether the passed field is empty or not, if it's empty, an error is set.
+// if it isn't empty, another check for validity is ran, with the passed regex.
 const checkField = (
   inputString: { value: string },
   setError: React.Dispatch<React.SetStateAction<SignUpFormError>>,
   requiredError: SignUpFormError,
   inputError: SignUpFormError,
   regex: RegExp,
-  processResult: ISignUpProcessResult
+  processResult: ISignUpProcessResult,
+  haltSignUp: Function
 ): void => {
   if (inputString.value.trim().length === 0) {
     processResult.haltSignUp = true;
+    haltSignUp();
     setError(requiredError);
   } else if (inputString.value.match(regex) === null) {
     setError(inputError);
   }
+};
+
+// check the length of the input, to see if it meets the length requirements
+const passwordLengthCheck = (inputString: { value: string }): boolean => {
+  return inputString.value.length < 8;
 };
 
 // helper for setting state of the sign up errors
