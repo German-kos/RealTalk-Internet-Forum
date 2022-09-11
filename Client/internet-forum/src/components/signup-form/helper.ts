@@ -59,14 +59,8 @@ export const processSignUpForm = (
   const processResult: ISignUpProcessResult = { haltSignUp: false };
 
   // regexes
-<<<<<<< HEAD
   const usernameRegex = /^(?=.{4,18}$)[a-zA-Z0-9._]+$/g;
   const englishRegex = /^(?=.{1,18}$)[a-zA-Z]*$/g;
-=======
-  const usernameRegex = /^[A-Za-z0-9]+$/g;
-  const englishRegex = /^[a-zA-Z]*$/g;
-  // const englishRegex = /^[a-zA-Z\s]*$/g;
->>>>>>> 8d8bf5d678d2773ba967012c220f9a3fdcf299f9
   const whitespaceRegex = /\s/;
   const emailRegex =
     /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
@@ -101,6 +95,12 @@ export const processSignUpForm = (
     errorMsg: "Field must contains only english characters",
   };
 
+  // field is too short error
+  const shortError: SignUpFormError = {
+    error: true,
+    errorMsg: "Username should be 4 to 20 characters long",
+  };
+
   // tests for if the field are empty, checks for whitespaces, and english letters
   // *password test only checks for an empty field and a length over 8
   // if (target.username.value.trim().length === 0) {
@@ -115,24 +115,19 @@ export const processSignUpForm = (
   //   });
   // }
 
-  checkField(
-    username,
-    setUsernameError,
-    requiredFieldError,
-    inputError,
-    usernameRegex,
-    processResult
-  );
-
-  // if (target.email.value.trim().length === 0) {
-  //   processResult.haltSignUp = true;
-  //   signUpHooks.setEmailError(requiredFieldError);
-  // } else if (!emailRegex.test(target.email.value)) {
-  //   signUpHooks.setEmailError({
-  //     error: true,
-  //     errorMsg: "Not a valid email address",
-  //   });
-  // }
+  if (username.value.length <= 3) {
+    setUsernameError(shortError);
+    processResult.haltSignUp = true;
+  } else {
+    checkField(
+      username,
+      setUsernameError,
+      requiredFieldError,
+      inputError,
+      usernameRegex,
+      processResult
+    );
+  }
 
   checkField(
     email,
