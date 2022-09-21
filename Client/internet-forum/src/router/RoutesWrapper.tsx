@@ -10,7 +10,11 @@ function RoutesWrapper() {
 
   return (
     <>
-      <AnimatePresence>
+      <AnimatePresence
+        initial={false}
+        exitBeforeEnter={false}
+        onExitComplete={() => null}
+      >
         <Routes location={location} key={location.pathname}>
           <Route element={<Layout />}>
             <Route index element={<Home />} />

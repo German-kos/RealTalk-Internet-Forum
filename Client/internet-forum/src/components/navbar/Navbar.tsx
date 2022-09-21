@@ -3,7 +3,18 @@ import "components/navbar/navbar.css";
 import logo from "assets/logo_white.png";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import {
+  modalSlice,
+  SelectModal,
+  openModal,
+  closeModal,
+} from "redux/slices/modalSlice";
+import { SelectUser, userSlice } from "redux/slices/UserSlice";
+import { useSelector } from "react-redux";
+import store from "redux/store";
+
 function Navbar() {
+  const modalState = useSelector(SelectModal);
   const navigate = useNavigate();
   // the state which controls the menu in the navbar
   const [toggleMenu, setToggleMenu] = useState<boolean>(false);
@@ -36,7 +47,7 @@ function Navbar() {
       </div>
       <div className="navbar-sign">
         <p>
-          <a onClick={navToSignIn}>Sign In</a>
+          <a onClick={() => store.dispatch(openModal())}>Sign In</a>
         </p>
         <button type="button" onClick={navToSignUp}>
           Sign Up
@@ -62,7 +73,15 @@ function Navbar() {
               <Menu />
               <div className="navbar-menu_container-links-sign">
                 <p>
-                  <a onClick={navToSignIn}>Sign In</a>
+                  <a
+                    onClick={() =>
+                      modalState
+                        ? store.dispatch(closeModal)
+                        : store.dispatch(openModal)
+                    }
+                  >
+                    Sign In
+                  </a>
                 </p>
                 <button type="button" onClick={navToSignUp}>
                   Sign Up

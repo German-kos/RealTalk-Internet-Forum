@@ -13,7 +13,7 @@ import store from "redux/store";
 //
 function SignInForm() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -42,14 +42,14 @@ function SignInForm() {
           Token: response.data.email,
         };
         store.dispatch(signIn(recievedUser));
-        navigate("/");
+        // navigate("/");
       })
       .catch(function (error) {
         console.log(error);
       });
   });
   //
-  const navToSignUp = () => navigate("/signup");
+  // const navToSignUp = () => navigate("/signup");
   //
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
   //
@@ -96,7 +96,7 @@ function SignInForm() {
           </div>
           <div className="sign-in_form_not-a-member">
             <p>Not a member?</p>
-            <a onClick={navToSignUp}>Sign Up</a>
+            {/* <a onClick={navToSignUp}>Sign Up</a> */}
           </div>
         </form>
       </div>
